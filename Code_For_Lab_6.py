@@ -17,6 +17,7 @@ def Encode(data):
             Edata += str(int(i)+3)
     return Edata
 def Menu():
+    stored_value = 0
     while True:
         print('Menu\n''-------------\n')
         select = int(input('1. Encode\n'
@@ -27,10 +28,10 @@ def Menu():
             break
         if select == 1:
             value = input(f'Please enter your password to encode:')
-            storedv = Encode(value)
+            stored_value = Encode(value)
             print('Your password has been encoded and stored!')
         elif select == 2:
-            print(f'The encoded password is {storedv}, and the original password is {Decode(storedv)}.')
+            print(f'The encoded password is {stored_value}, and the original password is {Decode(stored_value)}.')
             
 
 def Main():
