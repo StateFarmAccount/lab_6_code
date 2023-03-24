@@ -16,15 +16,11 @@ def Encode(data):
     return Edata
 
 def Decode(data):  # decodes encoded password by moving values down 3 digits
-    Ddata = ''
-    num = 0
-    for i in data:
-        if i.isdigit():
-            num = int(i) - 3  # moves value down 3 digits
-            if num < 0:
-                num +=10
-            Ddata += str(num)
-    return Ddata
+    decoded_password = ""
+    for digit in data:
+        decode = str((int(digit) - 3) % 10)  # shifts each digit down by 3
+        decoded_password += decode
+    return decoded_password
 
 def Menu():  # shows menu
     storedv = 0 
