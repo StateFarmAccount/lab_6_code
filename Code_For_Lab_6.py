@@ -4,16 +4,6 @@ Created on Wed Mar 22 23:08:35 2023
 
 @author: Kaylu
 """
-def Decode(data):
-    Ddata = ''
-    num = 0
-    for i in data:
-        if i.isdigit():
-            num = int(i) - 3 
-            if num < 0:
-                num +=10
-            Ddata += str(num)
-    return Ddata
 def Encode(data):
     Edata = ''
     num = 0
@@ -24,7 +14,19 @@ def Encode(data):
                 num %= 10
             Edata += str(num)
     return Edata
-def Menu():
+
+def Decode(data):  # decodes encoded password by moving values down 3 digits
+    Ddata = ''
+    num = 0
+    for i in data:
+        if i.isdigit():
+            num = int(i) - 3  # moves value down 3 digits
+            if num < 0:
+                num +=10
+            Ddata += str(num)
+    return Ddata
+
+def Menu():  # shows menu
     storedv = 0 
     while True:
         print('Menu\n''-------------\n')
@@ -38,9 +40,8 @@ def Menu():
             value = input(f'Please enter your password to encode:')
             storedv = Encode(value)
             print('Your password has been encoded and stored!')
-        elif select == 2:
-            print(f'The encoded password is {storedv}, and the original password is {Decode(storedv)}.')
-            
+        elif select == 2:  #decodes password
+	    print(f'The encoded password is {storedv}, and the original password is {Decode(storedv)}.')  # shows encoded password and original password (decoded  password)
 
 def Main():
     Menu()
